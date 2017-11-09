@@ -153,7 +153,7 @@
     </div>
     <div class="container">
       <div class="header clearfix">
-        <h3 class="text-muted">TimNhaNghi.Net</h3>
+        <h3 class="text-muted">NhaNghiViet.com</h3>
       </div>
 
       <div class="jumbotron">
