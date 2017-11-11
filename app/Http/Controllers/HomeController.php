@@ -23,8 +23,21 @@ class HomeController extends Controller
         $districts = \DB::table('districts')
                     ->where('districts.city', '=', $id)
                     ->where('districts.active', '=', 1)
+                    ->get();
+        return \Response::json(array('code' => '200', 'message' => 'success', 'districts' => $districts));
+    }
+
+    public function getTown($id){
+        $towns = \DB::table('towns')
+                    ->where('towns.district', '=', $id)
+                    ->where('towns.active', '=', 1)
                     ->get();   
-        return response()->json($districts);
+        $html = "";
+        $html .= '<option value="0">Chọn Phường / Xã</option>';
+        foreach ($towns as $town) {
+            $html .= '<option value="'.$town->id.'">'.$town->name.'</option>';
+        }
+        return $html;
     }
 
     public function getTownApi($id){
@@ -32,7 +45,7 @@ class HomeController extends Controller
                     ->where('towns.district', '=', $id)
                     ->where('towns.active', '=', 1)
                     ->get();   
-        return response()->json($towns);
+        return \Response::json(array('code' => '200', 'message' => 'success', 'towns' => $towns));
     }
 
     public function getHotelInTownBK(Request $request){
@@ -119,6 +132,8 @@ class HomeController extends Controller
                     users.id, 
                     users.name as hotelName,
                     users.images as images,
+                    users.lat as lat,
+                    users.lng as lng,
                     cities.name as cityName,
                     districts.name as districtName,
                     towns.name as townName,
