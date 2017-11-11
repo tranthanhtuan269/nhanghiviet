@@ -291,7 +291,7 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     url: "{{ URL::to('/') }}/getHotelInTown",
-                    method: "POST",
+                    method: "GET",
                     data: {
                             'city'          : cityId,
                             'district'      : districtId,
