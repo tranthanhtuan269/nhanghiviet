@@ -16,5 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/getDistrict/{id}', 'HomeController@getDistrict');
+Route::get('/getDistrictApi/{id}', 'HomeController@getDistrictApi');
 Route::get('/getTown/{id}', 'HomeController@getTown');
+Route::get('/getTownApi/{id}', 'HomeController@getTownApi');
 Route::post('/getHotelInTown', 'HomeController@getHotelInTown');

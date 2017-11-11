@@ -19,17 +19,20 @@ class HomeController extends Controller
         return $html;
     }
 
-    public function getTown($id){
+    public function getDistrictApi($id){
+        $districts = \DB::table('districts')
+                    ->where('districts.city', '=', $id)
+                    ->where('districts.active', '=', 1)
+                    ->get();   
+        return response()->json($districts);
+    }
+
+    public function getTownApi($id){
         $towns = \DB::table('towns')
                     ->where('towns.district', '=', $id)
                     ->where('towns.active', '=', 1)
                     ->get();   
-        $html = "";
-        $html .= '<option value="0">Chọn Phường / Xã</option>';
-        foreach ($towns as $town) {
-            $html .= '<option value="'.$town->id.'">'.$town->name.'</option>';
-        }
-        return $html;
+        return response()->json($towns);
     }
 
     public function getHotelInTownBK(Request $request){

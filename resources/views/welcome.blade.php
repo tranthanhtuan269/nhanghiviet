@@ -196,7 +196,7 @@
       <div class="jumbotron" id="data-return" style="display: none;">
       </div>
       <footer class="footer">
-        <p>&copy; 2017 NhaNghiViet.com, Inc.</p>
+        <p>&copy; 2017 NhaNghiViet.com</p>
       </footer>
     </div> <!-- /container -->
 
@@ -227,9 +227,9 @@
                 var citId = $("#city").val();
                 $('#loading').show();
                 var request = $.ajax({
-                    url: "{{ URL::to('/') }}/getDistrict/" + citId,
+                    url: "{{ URL::to('/') }}/getDistrictApi/" + citId,
                     method: "GET",
-                    dataType: "html"
+                    dataType: "json"
                 });
 
                 request.done(function (msg) {
