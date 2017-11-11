@@ -227,9 +227,9 @@
                 var citId = $("#city").val();
                 $('#loading').show();
                 var request = $.ajax({
-                    url: "{{ URL::to('/') }}/getDistrictApi/" + citId,
+                    url: "{{ URL::to('/') }}/getDistrict/" + citId,
                     method: "GET",
-                    dataType: "json"
+                    dataType: "html"
                 });
 
                 request.done(function (msg) {
